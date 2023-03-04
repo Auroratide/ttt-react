@@ -7,4 +7,7 @@ export default defineConfig({
 		port: 3000,
 	},
 	plugins: [react()],
+	define: {
+		global: {}, // https://github.com/vitejs/vite/discussions/5912#discussioncomment-2908994
+	}
 })
