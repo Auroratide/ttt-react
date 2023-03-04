@@ -9,6 +9,7 @@
 		"preview": "vite preview",
 		"storybook": "storybook dev -p 6006"
 	},
+	"license": "ISC",
 	"dependencies": {
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
