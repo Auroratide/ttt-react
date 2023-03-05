@@ -1,4 +1,4 @@
-import { Square } from '../Square/Square'
+import { Square } from '../Square'
 import c from 'classnames'
 import css from './Board.module.css'
 
