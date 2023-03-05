@@ -6,9 +6,35 @@ export default {
 } as Meta
 
 export const Default: StoryFn = () => (
-	<div style={{
-		width: '200px',
-	}}>
+	<Container>
 		<Square label="A1" />
-	</div>
+	</Container>
 )
+
+export const OnlyVertical: StoryFn = () => (
+	<Container>
+		<Square label="A1" vertical />
+	</Container>
+)
+
+export const OnlyHorizontal: StoryFn = () => (
+	<Container>
+		<Square label="A1" horizontal />
+	</Container>
+)
+
+export const BothVerticalAndHorizontal: StoryFn = () => (
+	<Container>
+		<Square label="A1" vertical horizontal />
+	</Container>
+)
+
+function Container({ children }: { children: React.ReactNode }) {
+	return (
+		<div style={{
+			width: '200px',
+		}}>
+			{children}
+		</div>
+	)
+}
