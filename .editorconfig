@@ -1,4 +1,4 @@
 root = true
 
-[src/**.{js,jsx,ts,tsx}]
+[src/**.{js,jsx,ts,tsx,css,html}]
 indent_style = tab
