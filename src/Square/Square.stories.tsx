@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { StoryFn, Meta } from '@storybook/react'
 import { Square } from './Square'
 
@@ -5,11 +6,19 @@ export default {
 	component: Square,
 } as Meta
 
-export const Default: StoryFn = () => (
-	<Container>
-		<Square label="A1" />
-	</Container>
-)
+export const InteractiveExample: StoryFn = () => {
+	const [horizontal, setHorizontal] = useState(false)
+
+	const toggleHorizontal = () => {
+		setHorizontal((prev) => !prev)
+	}
+
+	return (
+		<Container>
+			<Square label="A1" horizontal={horizontal} onClick={toggleHorizontal} />
+		</Container>
+	)
+}
 
 export const OnlyVertical: StoryFn = () => (
 	<Container>
