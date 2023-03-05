@@ -5,4 +5,10 @@ export default {
 	component: Square,
 } as Meta
 
-export const Default: StoryFn = () => <Square />
+export const Default: StoryFn = () => (
+	<div style={{
+		width: '200px',
+	}}>
+		<Square label="A1" />
+	</div>
+)
