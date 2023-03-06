@@ -1,5 +1,20 @@
 # TTT - A TestTestTest Workshop
 
+```
+# Get started
+pnpm install
+pnpm exec playwright install
+pnpm test
+```
+
+```
+# Do development
+pnpm storybook
+pnpm dev
+```
+
+## What's the game?
+
 **TTT** is a Tic Tac Toe variant that involves a little more strategy. Rather than playing as X's and O's, one player draws _vertical lines_, and the other _horizontal lines_. The goal is to be the first player to create three **t**'s in a row!
 
 * Set up a 3x3 square board.
