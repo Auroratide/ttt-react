@@ -1,6 +1,6 @@
 import c from 'classnames'
-import { VisuallyHidden } from '../VisuallyHidden'
 import css from './Square.module.css'
+import { Mark } from '../Mark'
 
 export interface SquareProps {
 	label: string
@@ -16,13 +16,5 @@ export function Square({ label, vertical, horizontal, onClick }: SquareProps) {
 			{vertical && <Mark type="vertical" />}
 			{horizontal && <Mark type="horizontal" />}
 		</button>
-	)
-}
-
-function Mark({ type }: { type: 'vertical' | 'horizontal' }) {
-	return (
-		<span className={c(css.absolutelyCentered, css.mark, css[type])}>
-			<VisuallyHidden>{' '}{type}{' '}</VisuallyHidden>
-		</span>
 	)
 }
