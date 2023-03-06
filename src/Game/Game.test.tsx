@@ -7,14 +7,17 @@ test.describe('Game', () => {
 		const getSquare = (label: string) =>
 			component.getByRole('button', { name: new RegExp(label) })
 	
+		await expect(component.getByText('Current Turn: vertical')).toBeVisible()
 		await getSquare('B2').click()
 		await expect(getSquare('B2')).not.toContainText('horizontal')
 		await expect(getSquare('B2')).toContainText('vertical')
 	
+		await expect(component.getByText('Current Turn: horizontal')).toBeVisible()
 		await getSquare('B3').click()
 		await expect(getSquare('B3')).toContainText('horizontal')
 		await expect(getSquare('B3')).not.toContainText('vertical')
 
+		await expect(component.getByText('Current Turn: vertical')).toBeVisible()
 		await getSquare('B3').click()
 		await expect(getSquare('B3')).toContainText('horizontal')
 		await expect(getSquare('B3')).toContainText('vertical')

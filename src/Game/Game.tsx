@@ -1,10 +1,24 @@
+import c from 'classnames'
+import css from './Game.module.css'
 import { Board } from '../Board'
+import { Mark } from '../Mark'
 import { useTtt } from './useTtt'
 
 export function Game() {
-	const { board } = useTtt()
+	const { board, turn } = useTtt()
 
 	return (
-		<Board state={board} />
+		<article>
+			<section>
+				<h2>Board</h2>
+				<Board state={board} />
+			</section>
+			<section className={c(css.row)}>
+				<h2>Current Turn:</h2>
+				<p className={c(css.squareContainer, css.smallerFont)}>
+					<Mark type={turn} />
+				</p>
+			</section>
+		</article>
 	)
 }

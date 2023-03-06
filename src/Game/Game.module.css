@@ -1,0 +1,21 @@
+.relative {
+	position: relative;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5em;
+}
+
+.smallerFont {
+	font-size: 0.8em;
+}
+
+.squareContainer {
+	position: relative;
+	width: 5em;
+	height: 5em;
+}
