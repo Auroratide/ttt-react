@@ -2,10 +2,18 @@ import c from 'classnames'
 import css from './Game.module.css'
 import { Board } from '../Board'
 import { Mark } from '../Mark'
-import { useTtt } from './useTtt'
+import { TttPlayer, TttSquare, useTtt } from './useTtt'
 
-export function Game() {
-	const { board, turn } = useTtt()
+export interface GameProps {
+	initialPlayer?: TttPlayer,
+	initialBoard?: Pick<TttSquare, TttPlayer>[][],
+}
+
+export function Game({
+	initialPlayer,
+	initialBoard,
+}: GameProps) {
+	const { board, turn } = useTtt(initialPlayer, initialBoard)
 
 	return (
 		<article>

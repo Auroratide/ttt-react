@@ -15,14 +15,17 @@ const empty = () => ({
 	vertical: false,
 })
 
-export const useTtt = () => {
-	const [boardState, setBoardState] = useState<TttBoard>([
+export const useTtt = (
+	startingPlayer?: TttPlayer,
+	startingBoard?: Pick<TttSquare, TttPlayer>[][]
+) => {
+	const [boardState, setBoardState] = useState<TttBoard>(startingBoard ?? [
 		[empty(), empty(), empty()],
 		[empty(), empty(), empty()],
 		[empty(), empty(), empty()],
 	])
 
-	const [turn, setTurn] = useState<TttPlayer>('vertical')
+	const [turn, setTurn] = useState<TttPlayer>(startingPlayer ?? 'vertical')
 
 	const select = (row: number, col: number) => {
 		setBoardState(markSquare(row, col, turn))
