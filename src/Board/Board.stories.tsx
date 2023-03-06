@@ -1,11 +1,12 @@
 import { StoryFn, Meta } from '@storybook/react'
+import { TttSquare } from '../Game'
 import { Board } from './Board'
 
 export default {
 	component: Board,
 } as Meta
 
-const makeSquare = (state: 'empty' | 'horizontal' | 'vertical' | 'both') => ({
+const makeSquare = (state: 'empty' | 'horizontal' | 'vertical' | 'both'): TttSquare => ({
 	horizontal: state === 'horizontal' || state === 'both',
 	vertical: state === 'vertical' || state === 'both',
 })

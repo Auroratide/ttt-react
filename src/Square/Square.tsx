@@ -11,7 +11,7 @@ export interface SquareProps {
 
 export function Square({ label, vertical, horizontal, onClick }: SquareProps) {
 	return (
-		<button className={c(css.square, css.relative, css.button)} onClick={onClick}>
+		<button className={c(css.square, css.relative, css.button)} onClick={onClick} disabled={onClick == null}>
 			<span className={c(css.cornerLabel)}>{label}</span>
 			{vertical && <Mark type="vertical" />}
 			{horizontal && <Mark type="horizontal" />}
@@ -22,7 +22,7 @@ export function Square({ label, vertical, horizontal, onClick }: SquareProps) {
 function Mark({ type }: { type: 'vertical' | 'horizontal' }) {
 	return (
 		<span className={c(css.absolutelyCentered, css.mark, css[type])}>
-			<VisuallyHidden>{type},</VisuallyHidden>
+			<VisuallyHidden>{' '}{type}{' '}</VisuallyHidden>
 		</span>
 	)
 }

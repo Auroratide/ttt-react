@@ -1,12 +1,10 @@
-import { Square } from '../Square'
 import c from 'classnames'
 import css from './Board.module.css'
+import { TttBoard } from '../Game'
+import { Row } from './Row'
 
 export interface BoardProps {
-	state: {
-		horizontal: boolean,
-		vertical: boolean,
-	}[][]
+	state: TttBoard,
 }
 
 export function Board({ state }: BoardProps) {
@@ -19,29 +17,5 @@ export function Board({ state }: BoardProps) {
 				))}
 			</tbody>
 		</table>
-	)
-}
-
-function Row({ row, index }: {
-	row: {
-		horizontal: boolean,
-		vertical: boolean,
-	}[],
-	index: number,
-}) {
-	const label = String.fromCharCode(65 + index)
-
-	return (
-		<tr>
-			{row.map((square, squareIndex) => (
-				<td key={`${label}${squareIndex + 1}`}>
-					<Square
-						label={`${label}${squareIndex + 1}`}
-						horizontal={square.horizontal}
-						vertical={square.vertical}
-					/>
-				</td>
-			))}
-		</tr>
 	)
 }
