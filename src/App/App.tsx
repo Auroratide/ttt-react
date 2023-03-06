@@ -1,7 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import c from 'classnames'
 import css from './App.module.css'
+import { Game } from '../Game'
 
 export function App() {
-	return <p className={css.hello}>Hello</p>
+	return (
+		<main>
+			<h1>TTT</h1>
+			<div className={c(css.fitScreen)}>
+				<Game />
+			</div>
+		</main>
+	)
 }
