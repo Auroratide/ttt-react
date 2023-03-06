@@ -5,7 +5,7 @@ export default {
 	component: Game,
 } as Meta
 
-export const Default: StoryFn = () => (
+export const FreshGame: StoryFn = () => (
 	<div style={{
 		width: '40vw',
 	}}>

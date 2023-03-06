@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/experimental-ct-react'
-import { Default } from './Game.stories'
+import { FreshGame } from './Game.stories'
 
 test.describe('Game', () => {
 	test('alternating turns', async ({ mount }) => {
-		const component = await mount(<Default />)
+		const component = await mount(<FreshGame />)
 		const getSquare = (label: string) =>
 			component.getByRole('button', { name: new RegExp(label) })
 	
