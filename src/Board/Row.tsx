@@ -1,8 +1,8 @@
 import { Square } from '../Square'
-import { TttSquare } from '../Game'
+import { SelectableSquare } from '../Game'
 
 export interface RowProps {
-	row: TttSquare[],
+	row: SelectableSquare[],
 	index: number,
 }
 

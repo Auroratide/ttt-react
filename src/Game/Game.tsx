@@ -2,18 +2,17 @@ import c from 'classnames'
 import css from './Game.module.css'
 import { Board } from '../Board'
 import { Mark } from '../Mark'
-import { TttPlayer, TttSquare, useTtt } from './useTtt'
+import { useTtt } from './useTtt'
+import { Ttt } from '../ttt'
 
 export interface GameProps {
-	initialPlayer?: TttPlayer,
-	initialBoard?: Pick<TttSquare, TttPlayer>[][],
+	initialGame?: Ttt.Game,
 }
 
 export function Game({
-	initialPlayer,
-	initialBoard,
+	initialGame,
 }: GameProps) {
-	const { board, turn } = useTtt(initialPlayer, initialBoard)
+	const { board, currentTurn } = useTtt(initialGame)
 
 	return (
 		<article>
@@ -24,7 +23,7 @@ export function Game({
 			<section className={c(css.row)}>
 				<h2>Current Turn:</h2>
 				<p className={c(css.squareContainer, css.smallerFont)}>
-					<Mark type={turn} />
+					<Mark type={currentTurn} />
 				</p>
 			</section>
 		</article>

@@ -1,10 +1,10 @@
 import c from 'classnames'
 import css from './Board.module.css'
-import { TttBoard } from '../Game'
+import { SelectableBoard } from '../Game'
 import { Row } from './Row'
 
 export interface BoardProps {
-	state: TttBoard,
+	state: SelectableBoard,
 }
 
 export function Board({ state }: BoardProps) {

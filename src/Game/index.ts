@@ -1,2 +1,2 @@
 export * from './Game'
-export type { TttBoard, TttSquare } from './useTtt'
+export type { SelectableBoard, SelectableSquare } from './useTtt'

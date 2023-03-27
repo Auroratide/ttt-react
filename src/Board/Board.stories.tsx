@@ -1,28 +1,17 @@
 import { StoryFn, Meta } from '@storybook/react'
-import { TttSquare } from '../Game'
+import { makeSquare } from '../ttt/test-builders'
 import { Board } from './Board'
-import {
-	makeEmpty,
-	makeHoriz,
-	makeVert,
-	makeBoth,
-} from '../Game/test-builders'
 
 export default {
 	component: Board,
 } as Meta
 
-// const makeSquare = (state: 'empty' | 'horizontal' | 'vertical' | 'both'): TttSquare => ({
-// 	horizontal: state === 'horizontal' || state === 'both',
-// 	vertical: state === 'vertical' || state === 'both',
-// })
-
 export const EmptyBoard: StoryFn = () => (
 	<Container>
 		<Board state={[
-			[makeEmpty(), makeEmpty(), makeEmpty()],
-			[makeEmpty(), makeEmpty(), makeEmpty()],
-			[makeEmpty(), makeEmpty(), makeEmpty()],
+			[makeSquare.empty(), makeSquare.empty(), makeSquare.empty()],
+			[makeSquare.empty(), makeSquare.empty(), makeSquare.empty()],
+			[makeSquare.empty(), makeSquare.empty(), makeSquare.empty()],
 		]} />
 	</Container>
 )
@@ -30,9 +19,9 @@ export const EmptyBoard: StoryFn = () => (
 export const SomeFilled: StoryFn = () => (
 	<Container>
 		<Board state={[
-			[makeEmpty(), makeHoriz(), makeVert()],
-			[makeEmpty(), makeBoth(), makeEmpty()],
-			[makeHoriz(), makeVert(), makeHoriz()],
+			[makeSquare.empty(), makeSquare.horizontal(), makeSquare.vertical()],
+			[makeSquare.empty(), makeSquare.both(), makeSquare.empty()],
+			[makeSquare.horizontal(), makeSquare.vertical(), makeSquare.horizontal()],
 		]} />
 	</Container>
 )

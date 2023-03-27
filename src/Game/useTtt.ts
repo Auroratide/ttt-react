@@ -1,60 +1,33 @@
 import { useState } from 'react'
+import { Ttt } from '../ttt'
 
-export type TttSquare = {
+export type SelectableSquare = {
 	horizontal: boolean,
 	vertical: boolean,
 	select?: () => void,
 }
 
-export type TttBoard = TttSquare[][]
-
-export type TttPlayer = 'horizontal' | 'vertical'
-
-const empty = () => ({
-	horizontal: false,
-	vertical: false,
-})
+export type SelectableBoard = SelectableSquare[][]
 
 export const useTtt = (
-	startingPlayer?: TttPlayer,
-	startingBoard?: Pick<TttSquare, TttPlayer>[][]
-) => {
-	const [boardState, setBoardState] = useState<TttBoard>(startingBoard ?? [
-		[empty(), empty(), empty()],
-		[empty(), empty(), empty()],
-		[empty(), empty(), empty()],
-	])
+	initialGame?: Ttt.Game,
+): {
+	board: SelectableBoard,
+	currentTurn: Ttt.Player,
+} => {
+	const [game, setGame] = useState<Ttt.Game>(initialGame ?? Ttt.newGame())
 
-	const [turn, setTurn] = useState<TttPlayer>(startingPlayer ?? 'vertical')
-
-	const select = (row: number, col: number) => {
-		setBoardState(markSquare(row, col, turn))
-		setTurn(exchangeTurns)
-	}
-
-	const board = boardState.map((row, rowIndex) => row.map((square, colIndex) => ({
+	const board = Ttt.eachSquare(game, (square, position) => ({
 		...square,
-		select: playerHasNotPlayedHere(square, turn)
-			? () => select(rowIndex, colIndex)
+		select: Ttt.canSelectPosition(game, position)
+			? () => setGame((game) => Ttt.select(game, position))
 			: undefined,
-	})))
+	}))
+
+	const currentTurn = game.currentTurn
 
 	return {
 		board,
-		turn,
+		currentTurn,
 	}
 }
-
-const markSquare = (row: number, col: number, turn: TttPlayer) =>
-	(currentBoard: TttBoard) => {
-		const newBoard = structuredClone(currentBoard)
-		newBoard[row][col][turn] = true
-
-		return newBoard
-	}
-
-const exchangeTurns = (turn: TttPlayer) =>
-	turn === 'vertical' ? 'horizontal' : 'vertical'
-
-const playerHasNotPlayedHere = (square: TttSquare, turn: TttPlayer) =>
-	!square[turn]
