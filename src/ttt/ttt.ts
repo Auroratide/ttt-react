@@ -42,15 +42,20 @@ export namespace Ttt {
 	export const squareAtPosition = (game: Game, { row, col }: Position): Square =>
 		game.board[row][col]
 
+	const swapTurns = (player: Player): Player =>
+		player === 'horizontal' ? 'vertical' : 'horizontal'
+
+	const markSquare = (square: Square, player: Player): Square => ({
+		...square,
+		[player]: true,
+	})
+
 	export const select = (game: Game, { row, col }: Position): Game => ({
 		...game,
-		currentTurn: game.currentTurn === 'horizontal' ? 'vertical' : 'horizontal',
+		currentTurn: swapTurns(game.currentTurn),
 		board: eachSquare(game, (square, position) => {
 			if (position.row === row && position.col === col) {
-				return {
-					...square,
-					[game.currentTurn]: true,
-				}
+				return markSquare(square, game.currentTurn)
 			}
 
 			return square
